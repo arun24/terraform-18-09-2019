@@ -12,3 +12,12 @@ variable "azs" {
   type    = "list"
   default = ["ap-south-1a", "ap-south-1b"]
 }
+
+variable "webservers_ami" {
+  default = "ami-02913db388613c3e1"
+}
+variable "instance_type" {
+  default = "t2.micro"
+
+}
+

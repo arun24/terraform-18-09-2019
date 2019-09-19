@@ -14,10 +14,11 @@ resource "aws_internet_gateway" "arun_igw" {
 }
 #Build subnets for our VPCs
 resource "aws_subnet" "public" {
-  count             = "${length(var.subnets_cidr)}"
-  vpc_id            = "${aws_vpc.arun_vpc.id}"
-  availability_zone = "${element(var.azs, count.index)}"
-  cidr_block        = "${element(var.subnets_cidr, count.index)}"
+  count                   = "${length(var.subnets_cidr)}"
+  vpc_id                  = "${aws_vpc.arun_vpc.id}"
+  availability_zone       = "${element(var.azs, count.index)}"
+  cidr_block              = "${element(var.subnets_cidr, count.index)}"
+  map_public_ip_on_launch = true
 
   tags = {
     Name = "subnet-${count.index + 1}"
